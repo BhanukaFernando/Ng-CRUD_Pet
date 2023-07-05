@@ -1,0 +1,84 @@
+<div class="card bg-black bg-gradient p-3 ">
+    <h1 class="text-dark card-title text-center text-white text-uppercase ">cars details manager</h1>
+    <hr class="border border-white border-2 opacity-75 ">
+      <div class="card-body overflow-auto bg-dark bg-gradient shadow-vl ">
+        <div class="row ">
+          <div class="col-6  ">
+            <div class="card bg-secondary bg-gradient">
+              <div  class=" card m-1" *ngFor="let car of cars">
+               <div class="row" (click)="populateForm(car)">
+                <div class="col-10  d-flex justify-content-around">
+                  <span>{{car.model}}</span>
+                  <span>{{car.year}}</span>
+                </div>
+                <div class="col-2">
+                  <a class="btn btn-danger btn-block" (click)="deleteCar(car.id)"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+               </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card card-body">
+              <form>
+                <div class="col-3 mb-3">
+                  <label for="model" class="form-label">Car Model </label>
+                  <input type="text" class="form-control" name="model" id="model" aria-describedby="model" [(ngModel)] ="Car.model">
+                </div>
+                <div class="col-3 mb-3">
+                  <label for="manufacturer" class="form-label">Car Manufacturer</label>
+                  <input type="text" class="form-control" name="manufacturer" id="manufacturer" aria-describedby="manufacturer" [(ngModel)] ="Car.manufacturer">
+                </div>
+                <div class="mb-3 row">
+                  <div class="col-3 mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input type="text" class="form-control" name="year" id="year" aria-describedby="year" [(ngModel)] ="Car.year">
+                  </div>
+                  <div class="col-3 mb-3">
+                    <label for="color" class="form-label">Color</label>
+                    <input type="text" class="form-control" name="color" id="color" aria-describedby="color" [(ngModel)] ="Car.color">
+                  </div>
+                  <div class="col-3 mb-3">
+                    <label for="colorHexCode" class="form-label">Color Code</label>
+                    <input type="text" class="form-control" name="colorHexCode" id="colorHexCode" aria-describedby="colorHexCode" [(ngModel)] ="Car.colorHexCode">
+                  </div>
+                </div>
+                <div class="col-4 mb-3">
+                  <label for="mileage" class="form-label">Mileage</label>
+                  <input type="text" class="form-control" name="mileage" id="mileage" aria-describedby="mileage" [(ngModel)] ="Car.mileage">
+                </div>
+                <div class=" mb-3">
+                  <label for="imageURL" class="form-label">image URL</label>
+                  <input type="text" class="form-control" name="imageURL" id="imageURL" aria-describedby="imageURL" [(ngModel)] ="Car.imageURL">
+                </div>
+                <div class="mb-3 row">
+                  <div class="col-3">
+                    <label for="price" class="form-label">price </label>
+                  <input type="text" class="form-control" name="price" id="price" aria-describedby="price"[(ngModel)] ="Car.price">
+                  </div>
+                  <div class="col-3">
+                    <label for="chassisNumber" class="form-label">Chassis Number </label>
+                  <input type="text" class="form-control" name="chassisNumber" id="chassisNumber" aria-describedby="chassisNumber"[(ngModel)] ="Car.chassisNumber">
+                  </div>
+                  <div class="col-3">
+                    <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+                  <input type="text" class="form-control" name="vehicleNumber" id="vehicleNumber" aria-describedby="vehicleNumber"[(ngModel)] ="Car.vehicleNumber" >
+                  </div>
+                  <div class="col-4 mt-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="isAvailable" name="isAvailable" [(ngModel)]="Car.isAvailable">
+                      <label class="form-check-label" for="isAvailable">
+                        Available
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <button class="btn btn-success  btn-block" (click)="onSubmit()">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
