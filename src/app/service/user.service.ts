@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { user } from '../models/user_loging.model';
+import { userloginrequest } from '../models/userloginrequest.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class UserService {
 
   constructor(private http : HttpClient ) { }
 
-  login(User :user) : Observable<user>{
-   return this.http.post<user>(this.bassUrl, User);
+  login(User :userloginrequest) : Observable<any>{
+   return this.http.post<userloginrequest>(this.bassUrl, User);
   }
 
 }

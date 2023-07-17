@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { user } from 'src/app/models/user_loging.model';
+import { userloginrequest } from 'src/app/models/userloginrequest.model';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent {
 title = 'user'
-User : user ={
+User : userloginrequest ={
   username: '',
   password: '',
 }
@@ -21,6 +21,7 @@ constructor(private userService:UserService ){
     this.userService.login(this.User)
     .subscribe(
       Response =>  {
+        this.User = Response
         console.log(Response);
       }
     );
