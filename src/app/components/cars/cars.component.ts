@@ -34,6 +34,7 @@ export class CarsComponent implements OnInit {
   }
 
   getAllCars() {
+    console.log(localStorage.getItem('jwtToken'))
     this.carsService.getAllCars().subscribe(
       Response => {
         this.cars = Response
