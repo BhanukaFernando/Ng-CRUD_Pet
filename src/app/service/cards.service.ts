@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { card } from '../models/card.model';
 import { Observable } from 'rxjs';
 
@@ -15,19 +15,30 @@ export class CardsService {
 
   //get all cards
   getAllCards() : Observable<card[]> { 
-    return this.http.get<card[]>(this.bassUrl);
+    const jwtToken = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${jwtToken}`);
+    return this.http.get<card[]>(this.bassUrl,{ headers: headers });
   }
 
+  // Add cards
   addCard(card: card) : Observable<card>{
     card.id = '00000000-0000-0000-0000-000000000000';
-   return this.http.post<card>(this.bassUrl, card)
+    const jwtToken = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${jwtToken}`);
+   return this.http.post<card>(this.bassUrl, card, { headers: headers })
   }
 
+  // Delete cards
   deleteCard(id: string) : Observable<card>{
-   return this.http.delete<card>(this.bassUrl + '/' + id);
+    const jwtToken = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${jwtToken}`);
+   return this.http.delete<card>(this.bassUrl + '/' + id, { headers: headers });
   }
 
+  // Update cards
   updateCard(card: card): Observable<card>{
-    return this.http.put<card>(this.bassUrl + '/' + card.id, card);
+    const jwtToken = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${jwtToken}`);
+    return this.http.put<card>(this.bassUrl + '/' + card.id, card, { headers: headers });
   }
 }
